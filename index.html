@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AK 25/26</title>
+
+<style>
+body {
+    margin: 0;
+    background: #000;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;  /* horizontal zentrieren */
+    align-items: center;      /* vertikal zentrieren */
+    min-height: 100vh;
+    transition: background 0.5s;
+    flex-direction: column;
+}
+
+#mainContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+}
+
+.top-text {
+    margin-top: 40px;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.button-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cool-button {
+    width: 250px;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff00cc, #3333ff);
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 15px rgba(255,0,204,0.6);
+}
+
+.cool-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(51,51,255,0.8);
+}
+
+.small-text {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 8px;
+    max-width: 280px;
+}
+
+.bottom-text {
+    margin-bottom: 30px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #ccc;
+}
+
+/* VIDEO SECTION */
+#videoSection {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #111;
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 60px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#videoSection.show {
+    display: flex;
+    opacity: 1;
+}
+
+#videoSection video {
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.3);
+}
+
+#backButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff00cc, #3333ff);
+    color: white;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#backButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255,0,204,0.6);
+}
+
+#legalNotice {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ccc;
+    max-width: 90%;
+    text-align: center;
+    line-height: 1.4;
+}
+</style>
+</head>
+<body>
+
+<!-- HAUPTINHALT -->
+<div id="mainContent">
+<div class="top-text">AK 25/26</div>
+
+<div class="container">
+
+    <div class="button-box">
+        <button class="cool-button" onclick="showVideo()">Collage</button>
+        <div class="small-text">Eine kleine Zeitmaschine aus Papier, Kleber und Erinnerungen.</div>
+    </div>
+
+    <div class="button-box">
+        <button class="cool-button" onclick="openLink('https://docs.google.com/spreadsheets/d/10povptYHGXgtJpI7sl_1QlLyDlHmQbTOZgwkdgaSeWs/edit')">Schülerranking</button>
+        <div class="small-text">Die Hitliste der Spicker-Strategen und Klassenchaoten.</div>
+    </div>
+
+    <div class="button-box">
+        <button class="cool-button" onclick="openLink('https://docs.google.com/spreadsheets/d/113YDGCWehkAk-R1ItBITHC3NdQKK7dwIkvOFt6guWpk/edit')">Lehrerranking</button>
+        <div class="small-text">Mathe kann alles erklären außer, warum wir es nicht können.</div>
+    </div>
+
+</div>
+
+<div class="bottom-text">
+✨ Nicht immer leise, aber immer legendär ✨
+</div>
+</div>
+
+<!-- VIDEO BEREICH -->
+<div id="videoSection">
+    <button id="backButton" onclick="hideVideo()">Zurück</button>
+
+    <video id="myVideo" autoplay controls controlsList="nodownload">
+        <source src="collage.mp4" type="video/mp4">
+        Dein Browser unterstützt kein Video.
+    </video>
+
+    <div id="legalNotice">
+        ⚠️ Dieses Video ist urheberrechtlich geschützt und ausschließlich für den privaten Gebrauch bestimmt. 
+        Jede Weitergabe, Vervielfältigung oder Bearbeitung ohne ausdrückliche Genehmigung ist untersagt.
+    </div>
+</div>
+
+<script>
+// Ablaufdatum
+const expiryDate = new Date(2026, 2, 10);
+if(new Date() > expiryDate) {
+    document.body.innerHTML = `
+        <div style="
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:black;
+            color:white;
+            font-family:Arial, sans-serif;
+            text-align:center;
+            flex-direction:column;
+            padding:20px;
+        ">
+            <h1>⛔ Zugriff nicht mehr möglich</h1>
+            <p>Diese Seite ist abgelaufen und nicht mehr verfügbar.</p>
+        </div>
+    `;
+}
+
+// Funktionen
+function openLink(url) {
+    window.open(url, "_blank");
+}
+
+function showVideo() {
+    if(new Date() > expiryDate) return;
+
+    document.getElementById("mainContent").style.display = "none";
+    const vSection = document.getElementById("videoSection");
+    vSection.classList.add("show");
+}
+
+function hideVideo() {
+    const vSection = document.getElementById("videoSection");
+    vSection.classList.remove("show");
+
+    setTimeout(() => {
+        vSection.style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+        const vid = document.getElementById("myVideo");
+        vid.pause();
+        vid.currentTime = 0;
+    }, 500); // wartet bis Fade-Out fertig ist
+}
+</script>
+
+</body>
+</html>
